@@ -1,7 +1,7 @@
 function Iframe() {
   var $iframe = $("iframe#jasmine-iframe");
   if($iframe.length == 0) {
-    $iframe = $("<iframe id='jasmine-iframe' style='width:100%;height:1000px'></iframe>");
+    $iframe = $("<iframe id='jasmine-iframe' style='width:0;height:0'></iframe>");
     $("body").prepend($iframe);
   }
 
@@ -29,7 +29,6 @@ function Iframe() {
 
 function visit(path) {
   var iframe = new Iframe();
-  console.log(path)
   iframe.setSrc("http://localhost:8888" + path)
 
   return iframe;
@@ -39,3 +38,13 @@ function page() {
   return (new Iframe()).find("html");
 };
 
+
+function showIframe() {
+  $("iframe#jasmine-iframe").css("width", $(document).width());
+  $("iframe#jasmine-iframe").css("height", $(document).height());
+}
+
+function hideIframe() {
+  $("iframe#jasmine-iframe").css("width", 0);
+  $("iframe#jasmine-iframe").css("height", 0);
+}
