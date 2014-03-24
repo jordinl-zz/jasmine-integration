@@ -15,7 +15,7 @@ var server = require('http').createServer(function(req, res) {
   };
 
   if(req.headers.referer && !req.url.match(/^\/\?spec/)) {
-    proxy.web(req, res, { target: 'http://www.angularjs.org' });
+    proxy.web(req, res, { target: 'http://localhost:9000' });
   } else {
     res.loadFile(dir + '/SpecRunner.html', "text/html");
   }
