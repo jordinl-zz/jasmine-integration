@@ -52,6 +52,15 @@ function Iframe() {
     }
   };
 
+  this.show = function() {
+    $iframe.css("width", $(document).width());
+    $iframe.css("height", $(document).height());
+  };
+
+  this.hide = function() {
+    $iframe.css("width", 0);
+    $iframe.css("height", 0);
+  }
 }
 
 function visit(path) {
@@ -66,12 +75,3 @@ function page() {
 };
 
 
-function showIframe() {
-  $("iframe#jasmine-iframe").css("width", $(document).width());
-  $("iframe#jasmine-iframe").css("height", $(document).height());
-}
-
-function hideIframe() {
-  $("iframe#jasmine-iframe").css("width", 0);
-  $("iframe#jasmine-iframe").css("height", 0);
-}
