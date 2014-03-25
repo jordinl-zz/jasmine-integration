@@ -31,6 +31,27 @@ function Iframe() {
       fun();
     }
   };
+
+  this.waitFor = function(condition, fun, _maxTimeout) {
+    var that = this;
+    var maxTimeout;
+    if(_maxTimeout === undefined) {
+      maxTimeout = 1000;
+    } else {
+      maxTimeout = _maxTimeout;
+    }
+
+    if(maxTimeout <= 0) {
+      return false;
+    }
+
+    if(condition()) {
+      fun();
+    } else {
+      setTimeout(function() { that.waitFor(condition, fun, maxTimeout - 100) }, 100);
+    }
+  };
+
 }
 
 function visit(path) {
