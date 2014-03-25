@@ -13,6 +13,12 @@ function Iframe() {
     $iframe.attr("src", src);
   };
 
+  this.click = function(selector) {
+    ready = false;
+    $iframe[0].onload = function() { ready = true; }
+    this.find(selector)[0].dispatchEvent(new Event("click"));
+  };
+
   this.find = function(selector) {
     return $iframe.contents().find(selector);
   };
