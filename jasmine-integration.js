@@ -17,10 +17,10 @@ function Iframe() {
     return $iframe.contents().find(selector);
   };
 
-  this.done = function(fun) {
+  this.ready = function(fun) {
     var that = this;
     if(!ready) {
-      setTimeout(function() { that.done(fun) }, 200);
+      setTimeout(function() { that.ready(fun) }, 200);
     } else {
       fun();
     }
