@@ -53,6 +53,21 @@ function Iframe() {
     }
   };
 
+  this.onBodyChange = function(done) {
+    var that = this;
+
+    if(!oldBody) {
+      oldBody = this.body();
+    }
+
+    if(oldBody == this.body()) {
+      setTimeout(function() { that.onBodyChange(done) }, 200);
+    } else {
+      oldBody = undefined;
+      done();
+    }
+  };
+
   this.show = function() {
     this.$el.css("width", $(document).width());
     this.$el.css("height", $(document).height());
