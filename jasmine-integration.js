@@ -6,16 +6,15 @@ function Iframe() {
   }
 
   var ready;
+  $iframe[0].onload = function() { console.log("page ready"); ready = true; }
 
   this.setSrc = function (src) {
     ready = false;
-    $iframe[0].onload = function() { ready = true; }
     $iframe.attr("src", src);
   };
 
   this.click = function(selector) {
     ready = false;
-    $iframe[0].onload = function() { ready = true; }
     this.find(selector)[0].dispatchEvent(new Event("click"));
   };
 
@@ -60,6 +59,10 @@ function Iframe() {
   this.hide = function() {
     $iframe.css("width", 0);
     $iframe.css("height", 0);
+  };
+
+  this.body = function() {
+    return this.find("html").html();
   }
 }
 
@@ -69,9 +72,4 @@ function visit(path) {
 
   return iframe;
 }
-
-function page() {
-  return (new Iframe()).find("html");
-};
-
 
