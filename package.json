@@ -1,0 +1,21 @@
+{
+  "name": "jasmine-integration",
+  "license": "MIT",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jordinl/jasmine-integration.git"
+  },
+  "description": "Jasmine Integraion",
+  "dependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jasmine": "~0.6.3",
+    "load-grunt-tasks": "^0.4.0",
+    "js-yaml": "~3.0.2",
+    "glob": "~3.2.9",
+    "underscore": "~1.6.0",
+    "http-proxy": "^1.0.2",
+    "connect": "^2.14.3",
+    "jquery": "~2.1.0"
+  }
+}
