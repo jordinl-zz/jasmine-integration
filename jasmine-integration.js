@@ -16,7 +16,6 @@ function Iframe() {
   };
 
   this.click = function(selector) {
-    isReady = false;
     this.find(selector)[0].dispatchEvent(new Event("click"));
   };
 
