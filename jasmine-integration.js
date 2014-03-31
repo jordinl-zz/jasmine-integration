@@ -17,6 +17,18 @@ function Iframe() {
 
   this.click = function(selector) {
     this.find(selector)[0].dispatchEvent(new Event("click"));
+    this.find(selector)[0].dispatchEvent(new Event("mousedown"));
+    this.find(selector)[0].dispatchEvent(new Event("mouseup"));
+  };
+
+  this.fill_in = function(selector, text) {
+    this.find(selector).val(text);
+    this.find(selector)[0].dispatchEvent(new Event("focus"));
+    this.find(selector)[0].dispatchEvent(new Event("keydown"));
+    this.find(selector)[0].dispatchEvent(new Event("keypress"));
+    this.find(selector)[0].dispatchEvent(new Event("input"));
+    this.find(selector)[0].dispatchEvent(new Event("change"));
+    this.find(selector)[0].dispatchEvent(new Event("keyup"));
   };
 
   this.find = function(selector) {
