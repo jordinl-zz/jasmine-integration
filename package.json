@@ -16,6 +16,6 @@
     "underscore": "~1.6.0",
     "http-proxy": "^1.0.2",
     "connect": "^2.14.3",
-    "jquery": "~2.1.0"
-  }
-}
+    "jquery": "~2.1.0",
+    "grunt-exec": "^0.4.5"
+  }}
