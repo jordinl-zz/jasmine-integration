@@ -39,7 +39,7 @@ var server = require('http').createServer(function(req, res) {
   };
 
   if(req.headers.referer && !req.url.match(/^\/\?$/) && !req.url.match(/^\/\?spec/)) {
-    proxy.web(req, res, { target: 'http://localhost:9000' });
+    proxy.web(req, res, { target: 'http://localhost:8080' });
   } else {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write(specRunnerHtml({files: files}));
