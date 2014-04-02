@@ -15,20 +15,34 @@ function Iframe() {
     this.$el.attr("src", src);
   };
 
+  // https://github.com/ariya/phantomjs/issues/11289
+
+  var KeyboardEvent = function(name) {
+    event =  document.createEvent('KeyboardEvent')
+    event.initEvent(name, true, false);
+    return event;
+  }
+
+  var MouseEvent = function(name) {
+    event =  document.createEvent('MouseEvents');
+    event.initEvent(name, true, false);
+    return event;
+  }
+
   this.click = function(selector) {
-    this.find(selector)[0].dispatchEvent(new Event("click"));
-    this.find(selector)[0].dispatchEvent(new Event("mousedown"));
-    this.find(selector)[0].dispatchEvent(new Event("mouseup"));
+    this.find(selector)[0].dispatchEvent(new MouseEvent("click"));
+    this.find(selector)[0].dispatchEvent(new MouseEvent("mousedown"));
+    this.find(selector)[0].dispatchEvent(new MouseEvent("mouseup"));
   };
 
   this.fill_in = function(selector, text) {
     this.find(selector).val(text);
-    this.find(selector)[0].dispatchEvent(new Event("focus"));
-    this.find(selector)[0].dispatchEvent(new Event("keydown"));
-    this.find(selector)[0].dispatchEvent(new Event("keypress"));
-    this.find(selector)[0].dispatchEvent(new Event("input"));
-    this.find(selector)[0].dispatchEvent(new Event("change"));
-    this.find(selector)[0].dispatchEvent(new Event("keyup"));
+    this.find(selector)[0].dispatchEvent(new KeyboardEvent("focus"));
+    this.find(selector)[0].dispatchEvent(new KeyboardEvent("keydown"));
+    this.find(selector)[0].dispatchEvent(new KeyboardEvent("keypress"));
+    this.find(selector)[0].dispatchEvent(new KeyboardEvent("input"));
+    this.find(selector)[0].dispatchEvent(new KeyboardEvent("change"));
+    this.find(selector)[0].dispatchEvent(new KeyboardEvent("keyup"));
   };
 
   this.find = function(selector) {
