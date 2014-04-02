@@ -9,10 +9,15 @@ var http = require('http'),
     dir = process.cwd(),
     jasmine_yaml,
     files = [],
-    specRunnerHtml;
-
+    specRunnerHtml,
+    application_port,
+    jasmine_port,
+    proxy_port;
 
 jasmine_yaml = yaml.safeLoad(fs.readFileSync('config/jasmine.yml', 'utf8'));
+application_port = jasmine_yaml.application_port;
+jasmine_port = jasmine_yaml.jasmine_port || 8888;
+proxy_port = jasmine_yaml.proxy_port || 8889;
 
 
 _.each(jasmine_yaml.src_files, function(file_glob) {
@@ -39,18 +44,18 @@ var server = require('http').createServer(function(req, res) {
   };
 
   if(req.headers.referer && !req.url.match(/^\/\?$/) && !req.url.match(/^\/\?spec/)) {
-    proxy.web(req, res, { target: 'http://localhost:8080' });
+    proxy.web(req, res, { target: 'http://localhost:' + application_port });
   } else {
     res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(specRunnerHtml({files: files}));
+    res.write(specRunnerHtml({files: files, proxy_port: proxy_port}));
     res.end();
   }
 });
 
-console.log("listening on port 8888");
-server.listen(8888);
+console.log("listening on port " + jasmine_port);
+server.listen(jasmine_port);
 
 connect.createServer(
     connect.static(dir)
-).listen(8889);
+).listen(proxy_port);
 
