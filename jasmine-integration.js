@@ -96,7 +96,7 @@ function Iframe() {
 
 function visit(path) {
   var iframe = new Iframe();
-  iframe.setSrc("http://localhost:8888" + path);
+  iframe.setSrc(document.location.origin + '/' + path);
 
   return iframe;
 }
