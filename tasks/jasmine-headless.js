@@ -3,7 +3,8 @@ module.exports = function(grunt) {
       exec = require('child_process').exec,
       yaml = require('js-yaml'),
       fs = require("fs"),
-      jasmine_yaml = yaml.safeLoad(fs.readFileSync('config/jasmine.yml', 'utf8'));
+      jasmine_yaml = yaml.safeLoad(fs.readFileSync('config/jasmine.yml', 'utf8')),
+      options = "";
 
   grunt.registerTask("jasmine:server:ci", "Run jasmine server headless mode", function() {
     if(jasmine_yaml.server_command) {
@@ -18,7 +19,11 @@ module.exports = function(grunt) {
       console.log(stderr);
     });
 
-    var code = sh.run("phantomjs node_modules/jasmine-integration/src/phantom-jasmine.js");
+    if(grunt.option("screenshot")) {
+      options += " --screenshot=" + grunt.option("screenshot");
+    }
+
+    var code = sh.run("phantomjs node_modules/jasmine-integration/src/phantom-jasmine.js" + options);
     if(code === 0) {
       console.log("Tests passed!");
     } else {

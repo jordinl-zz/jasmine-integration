@@ -1,7 +1,14 @@
-var page = require('webpage').create();
-var url = 'http://localhost:8888';
+var page = require('webpage').create(),
+    url = 'http://localhost:8888',
+    system = require("system"),
+    phantomConsole = console,
+    args = {};
 
-var phantomConsole = console;
+system.args.forEach(function(arg, index) {
+  if(index > 0) {
+    args[arg.split("=")[0].replace(/^--/, "")] = arg.split("=")[1];
+  }
+});
 
 console = {
   log: function() {},
@@ -25,7 +32,10 @@ var success = function() {
 }
 
 var process = function(){
-  page.render("/Users/pivotal/Desktop/foo.png");
+  if(args.screenshot) {
+    page.render(args.screenshot);
+  }
+
   if(finished()) {
     if(success()) {
       phantom.exit(0);
