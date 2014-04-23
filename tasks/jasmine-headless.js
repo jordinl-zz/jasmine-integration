@@ -24,9 +24,7 @@ module.exports = function(grunt) {
     }
 
     var code = sh.run("phantomjs node_modules/jasmine-integration/src/phantom-jasmine.js" + options);
-    if(code === 0) {
-      console.log("Tests passed!");
-    } else {
+    if(code !== 0) {
       grunt.fail.fatal("Tests failed!", code);
     }
   });

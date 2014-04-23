@@ -31,12 +31,19 @@ var success = function() {
   })
 }
 
+var results = function() {
+  return page.evaluate(function(){
+    return document.getElementsByClassName("bar")[0].innerText;
+  })
+}
+
 var process = function(){
   if(args.screenshot) {
     page.render(args.screenshot);
   }
 
   if(finished()) {
+    phantomConsole.log(results());
     if(success()) {
       phantom.exit(0);
     } else {
