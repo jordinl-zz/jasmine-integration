@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/jordinl/jasmine-integration.git"
   },
-  "description": "Jasmine Integraion",
+  "description": "Jasmine Integration",
   "dependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-jasmine": "~0.6.3",
