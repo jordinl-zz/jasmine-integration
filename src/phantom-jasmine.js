@@ -28,10 +28,8 @@ var process = function(){
   page.render("/Users/pivotal/Desktop/foo.png");
   if(finished()) {
     if(success()) {
-      phantomConsole.log("Success!");
       phantom.exit(0);
     } else {
-      phantomConsole.log("Failure!");
       phantom.exit(1);
     }
   } else {

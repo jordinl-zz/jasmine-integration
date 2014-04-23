@@ -8,6 +8,11 @@ module.exports = function(grunt) {
       console.log(stderr);
     });
 
-    sh.run("phantomjs node_modules/jasmine-integration/src/phantom-jasmine.js");
+    var code = sh.run("phantomjs node_modules/jasmine-integration/src/phantom-jasmine.js");
+    if(code === 0) {
+      console.log("Tests passed!");
+    } else {
+      grunt.fail.fatal("Tests failed!", code);
+    }
   });
 }
