@@ -20,13 +20,13 @@ jasmine_port = jasmine_yaml.jasmine_port || 8888;
 proxy_port = jasmine_yaml.proxy_port || 8889;
 
 _.each(jasmine_yaml.src_files, function(file_glob) {
-  _.map(glob.sync(file_glob), function(file) {
+  _.each(glob.sync(file_glob), function(file) {
     files.push(file);
   });
 });
 
 _.each(jasmine_yaml.spec_files, function(file_glob) {
-  _.map(glob.sync(file_glob), function(file) {
+  _.each(glob.sync(file_glob), function(file) {
     files.push(file);
   });
 });
