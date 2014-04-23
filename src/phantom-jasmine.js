@@ -1,6 +1,13 @@
 var page = require('webpage').create();
 var url = 'http://localhost:8888';
 
+var phantomConsole = console;
+
+console = {
+  log: function() {},
+  error: function() {}
+}
+
 var finished = function() {
   return page.evaluate(function() {
     banner = document.getElementsByClassName("banner")[0];
@@ -21,10 +28,10 @@ var process = function(){
   page.render("/Users/pivotal/Desktop/foo.png");
   if(finished()) {
     if(success()) {
-      console.log("Success!");
+      phantomConsole.log("Success!");
       phantom.exit(0);
     } else {
-      console.log("Failure!");
+      phantomConsole.log("Failure!");
       phantom.exit(1);
     }
   } else {
@@ -37,9 +44,9 @@ var process = function(){
 setTimeout(function() {
   page.open(url, function (status) {
     if(status === "success") {
-      console.log("Spec Runner loaded!");
+      phantomConsole.log("Spec Runner loaded!");
     } else {
-      console.log("Spec Runner not loaded!");
+      phantomConsole.log("Spec Runner not loaded!");
     }
 
     process();
