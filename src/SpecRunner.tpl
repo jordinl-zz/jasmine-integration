@@ -11,7 +11,7 @@
   <script type="text/javascript" src="http://localhost:<%= proxy_port %>/node_modules/jasmine-integration/node_modules/grunt-contrib-jasmine/vendor/jasmine-2.0.0/jasmine.js"></script>
   <script type="text/javascript" src="http://localhost:<%= proxy_port %>/node_modules/jasmine-integration/node_modules/grunt-contrib-jasmine/vendor/jasmine-2.0.0/jasmine-html.js"></script>
   <script type="text/javascript" src="http://localhost:<%= proxy_port %>/node_modules/jasmine-integration/node_modules/grunt-contrib-jasmine/vendor/jasmine-2.0.0/boot.js"></script>
-  <script type="text/javascript" src="http://localhost:<%= proxy_port %>/node_modules/jasmine-integration/jasmine-integration.js"></script>
+  <script type="text/javascript" src="http://localhost:<%= proxy_port %>/node_modules/jasmine-integration/src/jasmine-integration.js"></script>
 
   <% _.each(files, function(file) { %>
     <script type="text/javascript" src="http://localhost:<%= proxy_port %>/<%= file %>"></script>
