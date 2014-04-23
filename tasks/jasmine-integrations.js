@@ -7,7 +7,6 @@ module.exports = function(grunt) {
 
 
   grunt.registerTask("jasmine:server", "Run jasmine server", function() {
-    var command = "node node_modules/jasmine-integration/server.js";
     if(jasmine_yaml.server_command) {
       exec(jasmine_yaml.server_command, function(err, stdout, stderr) {
         console.log(stdout);
@@ -15,8 +14,6 @@ module.exports = function(grunt) {
       });
     }
 
-    sh.run(command);
+    sh.run("node node_modules/jasmine-integration/server.js");
   })
 }
-
-
