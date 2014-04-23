@@ -31,7 +31,7 @@ _.each(jasmine_yaml.spec_files, function(file_glob) {
   });
 });
 
-specRunnerHtml = _.template(fs.readFileSync(__dirname + '/src/SpecRunner.tpl', 'utf8'));
+specRunnerHtml = _.template(fs.readFileSync(__dirname + '/SpecRunner.tpl', 'utf8'));
 
 var server = require('http').createServer(function(req, res) {
   res.loadFile = function(filePath, contentType) {

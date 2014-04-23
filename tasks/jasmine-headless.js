@@ -3,7 +3,7 @@ module.exports = function(grunt) {
       exec = require('child_process').exec;
 
   grunt.registerTask("jasmine:server:ci", "Run jasmine server headless mode", function() {
-    exec("node node_modules/jasmine-integration/server.js", function(err, stdout, stderr) {
+    exec("node node_modules/jasmine-integration/src/server.js", function(err, stdout, stderr) {
       console.log(stdout);
       console.log(stderr);
     });

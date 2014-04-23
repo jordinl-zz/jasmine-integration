@@ -14,6 +14,6 @@ module.exports = function(grunt) {
       });
     }
 
-    sh.run("node node_modules/jasmine-integration/server.js");
+    sh.run("node node_modules/jasmine-integration/src/server.js");
   })
 }
