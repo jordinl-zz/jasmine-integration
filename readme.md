@@ -45,7 +45,7 @@ Async behavior with waitFor:
 - In package.json append to your devDependencies:
 
 	````
-	"jasmine-integration": "0.0.1"
+	"jasmine-integration": "0.0.2"
 	````
 - Install node modules: `npm install`
  
