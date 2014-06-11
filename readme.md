@@ -38,6 +38,12 @@ Async behavior with waitFor:
   });
 ````
 
+To show the contents of the page:
+
+````
+  page.show();
+````
+
 ## Installation
 
 - Install grunt cli: `npm install grunt-cli -g`
