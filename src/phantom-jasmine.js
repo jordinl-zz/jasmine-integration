@@ -25,7 +25,7 @@ system.args.forEach(function(arg, index) {
 console = {
   log: function() {},
   error: function() {}
-}
+};
 
 var finished = function() {
   return page.evaluate(function() {
@@ -35,19 +35,19 @@ var finished = function() {
     }
     return banner.getElementsByClassName("duration")[0]
   });
-}
+};
 
 var success = function() {
   return page.evaluate(function(){
     return document.getElementsByClassName("failed").length == 0;
   })
-}
+};
 
 var results = function() {
   return page.evaluate(function(){
     return document.getElementsByClassName("bar")[0].innerText;
   })
-}
+};
 
 var printProgress = function() {
   var progress = [];
@@ -100,7 +100,7 @@ var processTests = function(){
       processTests()
     }, 200)
   }
-}
+};
 
 setTimeout(function() {
   page.open(url, function (status) {
