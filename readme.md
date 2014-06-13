@@ -42,6 +42,14 @@ Async behavior with waitFor:
   });
 ````
 
+Waiting for page changes:
+````
+  beforeEach(function(done) {
+	page.click("button");
+	page.onBodyChange(done);
+  });
+````
+
 To show the contents of the page:
 
 ````
