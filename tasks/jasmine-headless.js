@@ -23,13 +23,17 @@ module.exports = function(grunt) {
       options += " --screenshot=" + grunt.option("screenshot");
     }
 
+    if(grunt.option("trace")) {
+      options += " --trace=" + grunt.option("trace");
+    }
+
     var code = sh.run("phantomjs node_modules/jasmine-integration/src/phantom-jasmine.js" + options);
 
     if(serverProcess) {
       serverProcess.kill();
     }
     jasmineProcess.kill();
-    
+
     if(code !== 0) {
       grunt.fail.fatal("Tests failed!", code);
     }

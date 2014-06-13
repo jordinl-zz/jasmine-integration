@@ -22,10 +22,12 @@ system.args.forEach(function(arg, index) {
   }
 });
 
-console = {
-  log: function() {},
-  error: function() {}
-};
+if(!args.trace) {
+  console = {
+    log: function() {},
+    error: function() {}
+  };
+}
 
 var finished = function() {
   return page.evaluate(function() {
