@@ -5,6 +5,7 @@ Integration tests with jasmine. Visit [node-todo](https://github.com/jordinl/nod
 
 - Ability to run tests in isolation.
 - Set breakpoints.
+- Ability to see actual contents of the page loaded.
 - Faster performance than phantomjs.
 
 
