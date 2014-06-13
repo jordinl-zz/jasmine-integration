@@ -105,6 +105,14 @@ var processTests = function(){
 };
 
 setTimeout(function() {
+  page.onCallback = function(data) {
+    if(data.state === 'specDone') {
+      print('jasmine_result' + JSON.stringify([].concat(data.results)));
+    } else {
+      phantom.exit(0);
+    }
+  };
+
   page.open(url, function (status) {
     if(status === "success") {
       printLine("Spec Runner loaded!");

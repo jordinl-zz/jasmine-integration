@@ -1,3 +1,20 @@
+// Check https://github.com/larrymyers/jasmine-reporters
+
+if(windon.callPhantom) {
+  function PhantomReporter() {
+    this.jasmineDone = function() {
+      window.callPhantom({ state: 'jasmineDone'  });
+    };
+
+    this.specDone = function(results) {
+      window.callPhantom({ state: 'specDone', results: results});
+    };
+  }
+
+  jasmine.getEnv().addReporter(new PhantomReporter());
+
+}
+
 function Iframe() {
   this.$el = $("iframe#jasmine-iframe");
   if(this.$el.length == 0) {
