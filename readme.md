@@ -1,7 +1,11 @@
 jasmine-integration
 ===================
 
-Integration tests with jasmine. Visit [node-todo](https://github.com/jordinl/node-todo) for an example
+Integration tests with jasmine. Visit [node-todo](https://github.com/jordinl/node-todo) for an example. Benefits of using this tool in a browser:
+
+- Ability to run tests in isolation.
+- Set breakpoints.
+- Faster performance than phantomjs.
 
 
 ## Usage
