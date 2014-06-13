@@ -37,7 +37,7 @@ var results = function() {
   })
 }
 
-var process = function(){
+var processTests = function(){
   if(args.screenshot) {
     page.render(args.screenshot);
   }
@@ -51,7 +51,7 @@ var process = function(){
     }
   } else {
     setTimeout(function() {
-      process()
+      processTests()
     }, 200)
   }
 }
@@ -64,6 +64,6 @@ setTimeout(function() {
       phantomConsole.log("Spec Runner not loaded!");
     }
 
-    process();
+    processTests();
   });
 }, 200);
